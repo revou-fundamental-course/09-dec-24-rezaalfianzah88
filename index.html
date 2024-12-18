@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Project-Travel Agent</title>
+    
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    
+    <!-- Stylesheets for resetting default styles and custom styles -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    
+    <!-- Favicon for the website -->
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
+    
+    <!-- Feather Icons for scalable vector icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Header section containing the navigation bar -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="./assets/images/logo.jpg" alt="Travel Agent Logo" />
+                </div>
+                <!-- Button to toggle the mobile menu -->
+                <button class="menu-button" id="menu-button" onclick="toggleMenuButton()">
+                    <i data-feather="menu" aria-hidden="true"></i>
+                    <span class="sr-only">Toggle menu</span>
+                </button>
+                <!-- Navigation links -->
+                <ul class="navigation-list" id="menu-list">
+                    <li><a href="#hero" onclick="setTitle(this)">Home</a></li>
+                    <li><a href="#our-package" onclick="setTitle(this)">Our Package</a></li>
+                    <li><a href="#call-us" onclick="setTitle(this)">Call Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main content area -->
+    <main class="main-content">
+        <!-- Hero section with a slider and main title -->
+        <section class="hero" id="hero">
+            <div class="hero-slider" id="hero-slider">
+                <img id="slide1" src="./assets/images/image1.jpg" alt="" />
+                <img id="slide2" src="./assets/images/image2.jpg" alt="" />
+                <img id="slide3" src="./assets/images/image3.jpeg" alt="" />
+                <img id="slide4" src="./assets/images/image4.jpg" alt="" />
+                <img id="slide5" src="./assets/images/image5.jpg" alt="" />
+                <img id="slide6" src="./assets/images/image6.jpeg" alt="" />
+            </div>
+            <div class="hero-wrapper">
+                <h1 class="main-title">Your Trusted Travel Agent's</h1>
+                <p class="hero-description">Your Happiness is Our Happiness</p>
+            </div>
+        </section>
+    
+        <!-- About and Contact section -->
+        <section class="container" id="about">
+            <div class="about-contact">
+                <div class="about">
+                    <img src="./assets/images/profile.jpg" alt="About Us" class="about-img" />
+                    <p class="about-caption">Vacation Is So Fun With My Travel Agent</p>
+                    <div class="about-author">
+                        <img src="./assets/images/avatar1.jpeg" alt="Florence Hughes" class="author-img" />
+                        <div class="author-data">
+                            <div class="author-name">Florence Hughes</div>
+                            <div class="author-info">Travel Agent, 28</div>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <h2 class="subsection-title">Some of the benefits you will get by using our services:</h2>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">1</div>
+                                <div class="feature-description">Work Within Client's Budget</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">2</div>
+                                <div class="feature-description">Handle All Aspects of the Booking Process</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">3</div>
+                                <div class="feature-description">Keep Client Account Information Up To Date</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">4</div>
+                                <div class="feature-description">Resolve Client Issues and Emergencies</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact">
+                    <h2 class="subsection-title">Contact Us</h2>
+                    <p>Sales will contact you within 24 hours after we receive your data.</p>
+                    <form class="contact-form" name="contact-form" onsubmit="return validateForm()">
+                        <div class="form-field">
+                            <label for="name" class="input-label">Your name:</label>
+                            <input type="text" id="name" name="name" class="input-field" placeholder="First name and last name" oninput="fillInput('name')"  />
+                            <p class="error-msg" id="name-error">Please fill your name</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="email" class="input-label">Email Address:</label>
+                            <input type="email" id="email" name="email" class="input-field" placeholder="example@email.com" oninput="fillInput('email')"  />
+                            <p class="error-msg" id="email-error">Please fill your email with a correct format</p>
+                        </div>
+                        <div class="form-field">
+                            <label for="interest" class="input-label">What are you interested in?</label>
+                            <select id="interest" name="interest" class="input-field" oninput="selectInterest()">
+                                <option value="" selected disabled>Select option</option>
+                                <option value="option 1">Bali — Island Paradise & Spiritual Retreat</option>
+                                <option value="option 2">Japan — Land of Tradition & Innovation</option>
+                                <option value="option 3">Italy — A Journey Through Time & Taste</option>
+                                <option value="option 4">South Africa — Wild Safaris & Stunning Coastlines</option>
+                                <option value="option 5">Thailand — Beaches, Temples & Tasty Eats</option>
+                                <option value="option 6">Peru — Mystical Ruins & Andean Adventure</option>
+                            </select>
+                            <p class="error-msg" id="interest-error">Please select one interest</p>
+                        </div>
+                        <button type="submit" class="button">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Packages section showcasing travel packages -->
+        <section class="package" id="our-package">
+            <div class="package-banner">
+                <div class="container">
+                    <h2 class="section-title">Our Packages</h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="package-list">
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="home"></i></div>
+                        <div class="package-content">
+                            <h3>Bali — Island Paradise & Spiritual Retreat</h3>
+                            <p>Bali is a destination where you can unwind your mind, body, and soul. From crystal-clear beaches to lush rice terraces, the island is filled with natural beauty.
+                                 Take yoga classes, surf world-class waves, and indulge in spa treatments that rejuvenate the senses.</p>
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="home"></i></div>
+                        <div class="package-content">
+                            <h3>Japan — Land of Tradition & Innovation</h3>
+                            <p>Japan offers a perfect blend of modern technology and ancient tradition. Walk under cherry blossoms in Kyoto, experience Tokyo's neon-lit energy,
+                                 or relax in a hot spring with a view of Mount Fuji. Culinary lovers will be spoiled with sushi, ramen, and world-class street food.</p>
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="home"></i></div>
+                        <div class="package-content">
+                            <h3>Italy — A Journey Through Time & Taste</h3>
+                            <p>Italy is a timeless destination for lovers of art, cuisine, and romance. From the sun-soaked Amalfi Coast to the art-filled streets of Florence, every city feels like a masterpiece.
+                                 Sip wine in Tuscany, visit ancient ruins in Rome, and take a dreamy gondola ride in Venice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-list">
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="star"></i></div>
+                        <div class="package-content">
+                            <h3>South Africa — Wild Safaris & Stunning Coastlines</h3>
+                            <p>Where else can you go on a Big 5 safari one day and relax on a white-sand beach the next? South Africa offers diverse landscapes, adventure sports,
+                                 and rich cultural heritage. Get close to nature at Kruger National Park or sip wine in the Cape Winelands.</p>
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="star"></i></div>
+                        <div class="package-content">
+                            <h3>Thailand — Beaches, Temples & Tasty Eats</h3>
+                            <p>Thailand has it all — turquoise beaches, world-class street food, and vibrant nightlife. From the island-hopping paradise of Phuket and Koh Samui to the cultural treasures of Chiang Mai,
+                                 Thailand is affordable, friendly, and endlessly exciting.</p>
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <div class="package-icon"><i data-feather="star"></i></div>
+                        <div class="package-content">
+                            <h3>Peru — Mystical Ruins & Andean Adventure</h3>
+                            <p>Home to the ancient wonder of Machu Picchu, Peru is a land of mystery and adventure. Hike the Inca Trail, explore the Amazon Rainforest, 
+                                or cruise through the surreal landscapes of Rainbow Mountain. Adventure and culture seekers will feel right at home.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to action section encouraging users to contact -->
+        <section class="cta" id="call-us">
+            <div class="container">
+                <h2 class="section-title">Your World Awaits. Let's Explore It Together.</h2>
+                <p>Where do you want to go? Your world is calling, and it's time to answer. Let's explore it together!</p>
+                <button class="button">Call Us</button>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer section with copyright and navigation links -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">
+                <img src="./assets/images/logo.jpg" alt="Travel Agent Logo" width="100" />
+            </div>
+            <ul class="footer-navigation">
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div>
+                Copyright &copy 2024 Mini Project-Travel Agent-Reza Alfianzah. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Script to replace icons with Feather icons -->
+    <script>
+        feather.replace();
+    </script>
+    <!-- Custom script for additional functionality -->
+    <script src="./js/script.js"></script>
+</body>
+</html>

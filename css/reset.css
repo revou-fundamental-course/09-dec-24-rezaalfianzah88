@@ -1,0 +1,62 @@
+/* 
+   CSS Reset v2.0 | http://meyerweb.com/eric/tools/css/reset/ 
+   License: none (public domain)
+*/
+
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Added for better box model handling */
+}
+
+html, body {
+  line-height: 1; /* Set line height for better readability */
+}
+
+/* Block Elements */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, h5, h6, p, blockquote, pre {
+  margin: 0; /* Reset margin for headings and paragraphs */
+}
+
+ol, ul {
+  list-style: none; /* Remove default list styles */
+}
+
+blockquote, q {
+  quotes: none; /* Remove quotes for blockquotes and q elements */
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: ""; /* Clear default content */
+}
+
+/* Table Reset */
+table {
+  border-collapse: collapse; /* Collapse borders */
+  border-spacing: 0; /* Remove spacing */
+}
+
+/* Miscellaneous */
+img {
+  max-width: 100%; /* Ensure images are responsive */
+  height: auto; /* Maintain aspect ratio */
+}

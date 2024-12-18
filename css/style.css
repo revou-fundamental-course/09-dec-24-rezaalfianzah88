@@ -1,0 +1,576 @@
+:root {
+  /* Define spacing sizes for consistent use throughout the stylesheet */
+  --size-1: 0.25rem; /* Smallest size */
+  --size-2: 0.5rem;  /* Small size */
+  --size-3: 0.75rem; /* Medium small size */
+  --size-4: 1rem;    /* Medium size */
+  --size-5: 1.5rem;  /* Medium large size */
+  --size-6: 2rem;    /* Large size */
+
+  /* Define a grid system based on 12 columns */
+  --span-12: calc(100% / 12); /* Width of each column */
+
+  /* Define widths based on the grid system */
+  --w-1: var(--span-12);
+  --w-2: calc(var(--span-12) * 2);
+  --w-3: calc(var(--span-12) * 3);
+  --w-4: calc(var(--span-12) * 4);
+  --w-5: calc(var(--span-12) * 5);
+  --w-6: calc(var(--span-12) * 6);
+  --w-7: calc(var(--span-12) * 7);
+  --w-8: calc(var(--span-12) * 8);
+  --w-9: calc(var(--span-12) * 9);
+  --w-10: calc(var(--span-12) * 10);
+  --w-11: calc(var(--span-12) * 11);
+  --w-12: 100%; /* Full width */
+
+  /* Define the main container width */
+  --container: calc(var(--w-12) - var(--size-6));
+
+  /* Define color variables for consistent theming */
+  --light-100: #eaeef7; /* Lightest color */
+  --light-200: #c8cdd6; /* Light color */
+  --light-300: #8c93a1; /* Medium light color */
+  --dark-100: #131c2e;  /* Dark color */
+  --dark-300: #4c5361;  /* Medium dark color */
+  --red: #e71414;       /* Red color for errors or alerts */
+
+  /* General styles */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif; /* Font stack for typography */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  background-color: var(--light-100); /* Set background color */
+}
+
+/* Container styles */
+.container {
+  width: var(--container); /* Set width based on the defined container variable */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Button styles */
+.button {
+  padding: var(--size-4) var(--size-6); /* Padding for button */
+  text-transform: uppercase; /* Uppercase text */
+  font-weight: 700; /* Bold text */
+  border: 2px solid var(--light-300); /* Border color */
+  background-color: var(--dark-100); /* Background color */
+  color: var(--light-100); /* Text color */
+  border-radius: var(--size-1); /* Rounded corners */
+  font-family: inherit; /* Inherit font from parent */
+  display: block; /* Block display */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.button:hover {
+  background-color: var(--light-300); /* Change background on hover */
+  color: var(--light-100); /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Border styles */
+.border {
+  border-bottom: 2px solid var(--light-300); /* Bottom border */
+  width: var(--w-2); /* Width based on grid */
+  margin: var(--size-5) auto; /* Centered margin */
+}
+
+/* Title styles */
+.main-title {
+  font-size: 36px; /* Main title font size */
+  font-weight: 700; /* Bold text */
+  margin-bottom: var(--size-4); /* Bottom margin */
+}
+
+.section-title {
+  font-size: 28px; /* Section title font size */
+  font-weight: 700; /* Bold text */
+  margin-bottom: var(--size-2); /* Bottom margin */
+}
+
+.subsection-title {
+  font-size: 20px; /* Subsection title font size */
+  font-weight: 700; /* Bold text */
+  margin-bottom: var(--size-1); /* Bottom margin */
+}
+
+/* Header styles */
+.header {
+  position: fixed; /* Fixed position at the top */
+  top: 0; /* Align to the top */
+  z-index: 1; /* Ensure it stays above other content */
+  background-color: var(--light-300); /* Background color */
+  width: 100vw; /* Full viewport width */
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  padding: var(--size-2) 0; /* Vertical padding */
+}
+
+.navbar .logo img {
+  width: 96px; /* Logo image width */
+}
+
+/* Menu button styles */
+.menu-button {
+  padding: var(--size-1) var(--size-2); /* Padding for button */
+  border: 2px solid var(--light-300); /* Border color */
+  background-color: var(--light-300); /* Background color */
+  color: var(--light-100); /* Text color */
+  border-radius: var(--size-1); /* Rounded corners */
+  font-family: inherit; /* Inherit font from parent */
+  display: block; /* Block display */
+}
+
+.menu-button:hover {
+  background-color: var(--light-300); /* Change background on hover */
+  color: var(--light-100); /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Navigation list styles */
+.navigation-list {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  padding: var(--size-4); /* Padding */
+  position: absolute; /* Absolute positioning */
+  width: var(--w-12); /* Full width */
+  background-color: var(--light-300); /* Background color */
+  z-index: -1; /* Behind other elements */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  visibility: hidden; /* Hidden by default */
+  opacity: 0; /* Fully transparent */
+  transition: all 150ms ease-in-out; /* Smooth transition */
+}
+
+.navigation-list.show {
+  top: var(--w-12); /* Position when shown */
+  visibility: visible; /* Make visible */
+  opacity: 1; /* Fully opaque */
+}
+
+.navigation-list li {
+  padding: var(--size-1) var(--size-2); /* Padding for list items */
+}
+
+.navigation-list li a {
+  display: block; /* Block display for links */
+}
+
+/* Main content styles */
+.main-content {
+  background-color: transparent; /* Transparent background */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* Hero section styles */
+.hero {
+  height: auto; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  position: relative; /* Relative positioning */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.hero-wrapper {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  display: flex; /* Flexbox layout */
+  color: var(--light-100);
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+  background-color: rgb(0 0 0 / 0.4);
+}
+
+.hero-description {
+  margin-bottom: var(--size-2); /* Bottom margin */
+}
+
+/* Hero slider styles */
+.hero-slider {
+  height: var(--w-12); /* Set height */
+  width: var(--w-12); /* Set width */
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Row layout */
+  flex-wrap: nowrap; /* No wrapping */
+  position: absolute; /* Absolute positioning */
+  z-index: -1; /* Behind other elements */
+  transition: all 2s ease-in-out; /* Smooth transition */
+}
+
+.hero-slider img {
+  display: block; /* Block display for images */
+  object-fit: cover; /* Cover the area */
+  object-position: center; /* Center the image */
+  width: 100vw; /* Full viewport width */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* About and contact section styles */
+.about-contact {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  margin-top: var(--size-4); /* Top margin */
+}
+
+.about {
+ width: var(--w-12); /* Full width */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  padding: 0 0 var(--size-4); /* Padding */
+}
+
+.about-img {
+  width: 100%; /* Full width */
+  border-radius: var(--size-2); /* Rounded corners */
+}
+
+.about-caption {
+  color: var(--dark-300); /* Text color */
+  font-style: italic; /* Italic text */
+  padding: 0; /* No padding */
+}
+
+.about-caption::before,
+.about-caption::after {
+  content: '"'; /* Add quotes before and after caption */
+}
+
+.about-author {
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Row layout */
+  gap: var(--size-4); /* Gap between items */
+  padding: 0; /* No padding */
+}
+
+.author-img {
+  width: calc(var(--size-6) * 2); /* Double the size-6 */
+  height: calc(var(--size-6) * 2); /* Double the size-6 */
+  border-radius: 9999px; /* Circular shape */
+}
+
+.author-data {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-2); /* Gap between items */
+  justify-content: center; /* Center items vertically */
+}
+
+.author-name {
+  font-weight: 700; /* Bold text */
+}
+
+.author-info {
+  color: var(--dark-300); /* Text color */
+  font-style: italic; /* Italic text */
+}
+
+/* Feature list styles */
+.feature-list {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  padding: var(--size-4) 0; /* Vertical padding */
+}
+
+/* Feature item styles */
+.feature-item {
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Row layout */
+  gap: var(--size-4); /* Gap between items */
+  align-items: center; /* Center items vertically */
+}
+
+/* Feature icon styles */
+.feature-icon {
+  padding: var(--size-2); /* Padding for icon */
+  border: 1px solid var(--light-300); /* Border color */
+  border-radius: 9999px; /* Circular shape */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center icon */
+  align-items: center; /* Center icon */
+  color: var(--light-300); /* Text color */
+}
+
+/* Contact section styles */
+.contact {
+  background-color: var(--light-200); /* Background color */
+  padding: var(--size-4); /* Padding */
+  width: auto; /* Automatic width */
+  height: fit-content; /* Fit content height */
+  border-radius: var(--size-2); /* Rounded corners */
+}
+
+/* Contact form styles */
+.contact-form {
+  margin-top: var(--size-6); /* Top margin */
+}
+
+/* Form field styles */
+.form-field {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-1); /* Gap between items */
+  padding: var(--size-2) 0; /* Vertical padding */
+}
+
+/* Input label styles */
+.input-label {
+  font-weight: 500; /* Medium weight */
+}
+
+/* Input field styles */
+.input-field {
+  padding: var(--size-2); /* Padding */
+  background-color: var(--light-100); /* Background color */
+  border: 2px solid var(--light-300); /* Border color */
+  border-radius: var(--size-1); /* Rounded corners */
+  color: var(--dark-100); /* Text color */
+  font-family: inherit; /* Inherit font from parent */
+}
+
+/* Error message styles */
+.error-msg {
+  font-size: 12px; /* Font size */
+  color: var(--red); /* Red color for errors */
+  font-weight: 500; /* Medium weight */
+  visibility: hidden; /* Hidden by default */
+  display: none; /* Not displayed */
+}
+
+/* Button styles in contact form */
+.contact-form .button {
+  width: var(--w-12); /* Full width */
+}
+
+/* Package section styles */
+.package {
+  margin-top: var(--size-4); /* Top margin */
+}
+
+/* Package banner styles */
+.package-banner {
+  padding: var(--size-6) 0; /* Vertical padding */
+  background-color: var(--light-200); /* Background color */
+  text-align: center; /* Center text */
+}
+
+/* Package list styles */
+.package-list {
+  display: flex; /* Flex box layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-6); /* Gap between items */
+  padding: var(--size-6); /* Padding */
+}
+
+/* Package item styles */
+.package-item {
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Row layout */
+  gap: var(--size-4); /* Gap between items */
+  align-items: flex-start; /* Align items to the start */
+  width: var(--w-12); /* Full width */
+}
+
+/* Package icon styles */
+.package-icon {
+  padding: var(--size-2); /* Padding for icon */
+  color: var(--dark-100); /* Text color */
+  border: 1px solid var(--light-300); /* Border color */
+  border-radius: 9999px; /* Circular shape */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center icon */
+  align-items: center; /* Center icon */
+}
+
+.package-icon:hover {
+  border-color: var(--dark-300); /* Change border color on hover */
+  color: var(--dark-300); /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Package content styles */
+.package-content {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-2); /* Gap between items */
+}
+
+/* Package content heading styles */
+.package-content h3 {
+  font-weight: 500; /* Medium weight */
+}
+
+/* Call to action styles */
+.cta {
+  margin-top: var(--size-4); /* Top margin */
+  padding: var(--size-6) 0; /* Vertical padding */
+  border-top: 1px solid var(--dark-100); /* Top border */
+}
+
+/* CTA container styles */
+.cta .container {
+  text-align: center; /* Center text */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  align-items: center; /* Center items */
+}
+
+/* CTA paragraph styles */
+.cta .container p {
+  width: var(--w-12); /* Full width */
+}
+
+/* CTA button styles */
+.cta .container .button {
+  width: var(--w-12); /* Full width */
+}
+
+/* Footer styles */
+.footer {
+  border-top: 1px solid var(--dark-100); /* Top border */
+  padding: var(--size-4); /* Padding */
+  background-color: var(--light-300); /* Background color */
+  color: var(--light-100); /* Text color */
+}
+
+/* Footer container styles */
+.footer .container {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  gap: var(--size-4); /* Gap between items */
+  align-items: center; /* Center items */
+}
+
+/* Footer navigation styles */
+.footer-navigation {
+  display: flex; /* Flexbox layout */
+  flex-direction: row; /* Row layout */
+  gap: var(--size-4); /* Gap between items */
+}
+
+/* Link styles */
+a {
+  font-weight: 500; /* Medium weight */
+  color: var(--light-100); /* Text color */
+  text-decoration: none; /* No underline */
+}
+
+a:hover {
+  cursor: pointer; /* Change cursor to pointer */
+  text-decoration: underline solid black 2px; /* Underline on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 767px) {
+  .main-title {
+    font-size: 30px; /* Smaller font size for mobile */
+    margin-bottom: var(--size-2); /* Bottom margin */
+  }
+
+  .about-caption {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .feature .subsection-title {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .cta .container .section-title {
+    font-size: 23px; /* Smaller font size */
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --container: calc(768px - calc(var(--size-6) * 2)); /* Adjust container width */
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  :root {
+    --container: calc(1024px - calc(var(--size-6) * 2)); /* Adjust container width */
+  }
+
+  .navbar .logo img {
+    width: 120px; /* Larger logo for desktop */
+  }
+
+  .menu-button {
+    display: none; /* Hide menu button on larger screens */
+  }
+    .navigation-list {
+    flex-direction: row; /* Row layout for navigation */
+    gap: 0; /* No gap between items */
+    padding: 0; /* No padding */
+    visibility: visible; /* Make visible */
+    opacity: 1; /* Fully opaque */
+    position: static; /* Static positioning */
+    width: auto; /* Automatic width */
+    background-color: transparent; /* Transparent background */
+    z-index: 0; /* Normal stacking order */
+  }
+
+  .about-contact {
+    flex-direction: row; /* Row layout for about and contact */
+  }
+
+  .about {
+    width: var(--w-8); /* Adjust width for larger screens */
+  }
+
+  .about-caption {
+    padding: 0 var(--size-6); /* Horizontal padding */
+  }
+
+  .about-author {
+    padding: 0 var(--size-6); /* Horizontal padding */
+  }
+
+  .contact {
+    width: var(--w-4); /* Adjust width for contact section */
+  }
+
+  .package-list {
+    flex-direction: row; /* Row layout for package list */
+    justify-content: space-between; /* Space between items */
+  }
+
+  .package-item {
+    width: var(--w-4); /* Adjust width for package items */
+  }
+
+  .cta .container p {
+    width: var(--w-6); /* Adjust width for CTA paragraph */
+  }
+
+  .cta .container .button {
+    width: var(--w-3); /* Adjust width for CTA button */
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  :root {
+    --container: calc(1280px - calc(var(--size-6) * 2)); /* Adjust container width */
+  }
+}
+
+@media only screen and (min-width: 1536px) {
+  :root {
+    --container: calc(1536px - calc(var(--size-6) * 2)); /* Adjust container width */
+  }
+}
