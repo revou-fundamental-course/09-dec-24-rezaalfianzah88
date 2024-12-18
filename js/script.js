@@ -1,7 +1,7 @@
 // Function to set the document title based on the clicked element
 function setTitle(element) {
   const text = element.innerText; // Get the text of the clicked element
-  document.title = `${text} | Mini_Project-Travel_Agent`; // Set the document title
+  document.title = `${text} | Mini Project-Travel Agent`; // Set the document title
 }
 
 // Function to toggle the visibility of the navigation menu
