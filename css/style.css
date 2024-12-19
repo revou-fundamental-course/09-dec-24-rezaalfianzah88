@@ -171,15 +171,15 @@
   overflow-x: hidden; /* Hide horizontal overflow */
 }
 
-/* Hero section styles */
-.hero {
+/* home section styles */
+.home {
   height: auto; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   position: relative; /* Relative positioning */
   overflow-x: hidden; /* Hide horizontal overflow */
 }
 
-.hero-wrapper {
+.home-wrapper {
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   display: flex; /* Flexbox layout */
@@ -192,12 +192,12 @@
   background-color: rgb(0 0 0 / 0.4);
 }
 
-.hero-description {
+.home-description {
   margin-bottom: var(--size-2); /* Bottom margin */
 }
 
-/* Hero slider styles */
-.hero-slider {
+/* home slider styles */
+.home-slider {
   height: var(--w-12); /* Set height */
   width: var(--w-12); /* Set width */
   display: flex; /* Flexbox layout */
@@ -208,7 +208,7 @@
   transition: all 2s ease-in-out; /* Smooth transition */
 }
 
-.hero-slider img {
+.home-slider img {
   display: block; /* Block display for images */
   object-fit: cover; /* Cover the area */
   object-position: center; /* Center the image */
