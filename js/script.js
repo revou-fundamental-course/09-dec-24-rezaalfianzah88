@@ -11,7 +11,7 @@ function toggleMenuButton() {
 
 // Function to scroll to the start button
 function getStartButton() {
-  const bannerHeight = document.getElementById("hero").clientHeight; // Get the height of the hero section
+  const bannerHeight = document.getElementById("home").clientHeight; // Get the height of the home section
   const headerHeight = document.querySelector(".header").clientHeight; // Get the height of the header
   window.scrollBy(0, bannerHeight - headerHeight); // Scroll the window by the difference in height
 }
@@ -93,29 +93,29 @@ function selectInterest() {
 }
 
 // Auto-sliding banner functionality
-const heroSlider = document.getElementById("hero-slider"); // Get the hero slider element
-const windowWidth = heroSlider.clientWidth; // Get the width of the hero slider
+const homeSlider = document.getElementById("home-slider"); // Get the home slider element
+const windowWidth = homeSlider.clientWidth; // Get the width of the home slider
 
 let index = 1; // Initialize the index for the current slide
 
 // Set the initial position of the slider
-heroSlider.style.transform = `translateX(${-windowWidth * index}px)`;
+homeSlider.style.transform = `translateX(${-windowWidth * index}px)`;
 
 // Set an interval to automatically slide the banner
 setInterval(() => {
   if (index >= 6) return; // Stop if the last slide is reached
 
   index++; // Move to the next slide
-  heroSlider.style.transition = "all 2s ease-in-out"; // Apply transition effect
-  heroSlider.style.transform = `translateX(${-windowWidth * index}px)`; // Update the slider position
+  homeSlider.style.transition = "all 2s ease-in-out"; // Apply transition effect
+  homeSlider.style.transform = `translateX(${-windowWidth * index}px)`; // Update the slider position
 }, 6000); // Set the interval for sliding
 
 // Event listener for when the transition ends
-heroSlider.addEventListener("transitionend", () => {
+homeSlider.addEventListener("transitionend", () => {
   if (document.getElementById(`slide${index}`)?.id === "slide6") { // Check if the last slide is reached
-    heroSlider.style.transition = "none"; // Remove transition for reset
+    homeSlider.style.transition = "none"; // Remove transition for reset
     index = 0; // Reset index to the first slide
-    heroSlider.style.transform = `translateX(${-windowWidth * index}px)`; // Reset slider position
+    homeSlider.style.transform = `translateX(${-windowWidth * index}px)`; // Reset slider position
   }
 });
 
